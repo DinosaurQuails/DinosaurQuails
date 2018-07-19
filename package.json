@@ -4,7 +4,10 @@
   "description": "An app to help you organize and optimize your job search!",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node ./server/index.js",
+    "start-dev": "nodemon ./server/index.js",
+    "build-dev": "webpack -d --watch"
   },
   "repository": {
     "type": "git",
