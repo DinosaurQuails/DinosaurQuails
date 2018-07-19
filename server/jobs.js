@@ -10,7 +10,7 @@ jobs.get('/jobs', jobHelperQuery);
 jobs.post('/jobs', jobHelperSaver);
   //send req.miscFields to DB for new instance
 
-const jobHelperQuery = (err, searchTerms) {
+const jobHelperQuery = (err, searchTerms) => {
   if (err) {
     console.log(err);
   }
@@ -19,7 +19,7 @@ const jobHelperQuery = (err, searchTerms) {
   res.send()
 }
 
-const jobHelperSaver = (err, inputtedTerms) {
+const jobHelperSaver = (err, inputtedTerms) => {
   if (err) {
     console.log(err);
   }
