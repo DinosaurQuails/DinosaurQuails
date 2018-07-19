@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { Component, Fragment } from "react";
+import Nav from "./Nav.jsx";
 import axios from 'axios';
-// import relevant material-ui components
-// look to material docs for more.follows @material-ui/ syntax
 
-class App extends React.Component {
-  constructor (props) {
+class App extends Component {
+  constructor(props) {
     super(props);
+
     this.state = {
-      default: false // replace
-    }
+      default: false
+    };
   }
 
   render() {
-    return
-    <div id="container">
-      {/* structure here should be layout based call to other components to populate. */}
-      !!!APP LAYOUT GOES HERE USE MATERIAL!!!
-    </div>
+    return (
+      <Fragment>
+        <Nav />
+      </Fragment>
+    );
   }
 }
 
