@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from "react";
-import Nav from "./Nav.jsx";
+import React, { Component, Fragment } from 'react';
+import Nav from './Nav.jsx';
+import SelectBar from './SelectBar.jsx'
 import axios from 'axios';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
     return (
       <Fragment>
         <Nav />
+        <SelectBar />
       </Fragment>
     );
   }

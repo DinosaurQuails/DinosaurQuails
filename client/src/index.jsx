@@ -7,4 +7,4 @@ import App from './components/App.jsx';
 
 //-------RENDER------
 
-ReactDOM.render(<App />, document.getElementByID('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
