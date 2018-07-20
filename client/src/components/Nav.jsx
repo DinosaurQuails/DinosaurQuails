@@ -13,11 +13,14 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  appbar: {
+    backgroundColor: '#7dce94',
+  }
 };
 
 const Nav = props => (
   <div id="nav" style={styles.root}>
-    <AppBar position="static">
+    <AppBar position="static" style={styles.appbar}>
       <Toolbar variant="dense" >
         <IconButton id="Menu" color="inherit" aria-label="Menu" style={styles.menuButton}>
           <div>menu</div>
