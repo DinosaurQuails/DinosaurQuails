@@ -14,9 +14,10 @@ router.post('/signup', function(req, res) {
     password: req.body.password
   };
 
+  
   db.createUser(user, (err, data) => {
     if (err) {
-      res.sendStatus(500);
+     return res.sendStatus(500);
     } else {
       if (data.messageCode === 101 || data.messageCode === 102) {
         res.json(data);
@@ -30,7 +31,7 @@ router.post('/signup', function(req, res) {
 
 router.get('/signup', function(req, res) {
   //render signup modal
-  // res.sendFile(path.join(__dirname, '../client/dist/signup.html'));
+  //pass on info for state change 
 });
 
 module.exports = router;

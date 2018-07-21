@@ -22,7 +22,9 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 //Establish routes
 app.post('/jobs', require('./jobs.js'));
+
 app.get('/', util.checkUser, (req, res) => {
+  //Alter to reflect/establish state
   // res.render('index');
 });
 
@@ -34,7 +36,8 @@ app.get('/login', require('./login.js'));
 
 app.get('/logout', function(req, res) {
   req.session.destroy(function() {
-    res.redirect('/');
+    // res.redirect('/');
+    //send confirmation that session is destroyed & state change trigger
   });
 });
 

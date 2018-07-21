@@ -4,11 +4,11 @@ mongoose.connect('mongodb://localhost/dinasour');
 const db = mongoose.connection;
 
 db.on('error', function() {
-  console.log('error');
+  console.log('Error connecting to Mongoose');
 });
 
 db.once('open', function() {
-  console.log('Server connected');
+  console.log('Mongoose connected');
 });
 
 const bcrypt = require('bcrypt-nodejs');
@@ -33,7 +33,6 @@ let createUser = (user, callback) => {
       console.log(err);
       callback(err, null);
     }
-
     if (existingUser) {
       console.log('existing', existingUser);
       if (existingUser.email === user.email) {
@@ -42,6 +41,7 @@ let createUser = (user, callback) => {
         callback(null, { messageCode: 102, message: 'User name already exists' });
       }
     } else {
+      console.log('I got here');
       bcrypt.hash(user.password, saltRounds, function(err, hash) {
         if (err) {
           callback(err, null);
@@ -53,22 +53,32 @@ let createUser = (user, callback) => {
           userName: user.userName,
           email: user.email,
           password: hash
-        };
+        }; 
 
         let newUser = new User(user_obj);
-        newUser.save((err, savedUser) => {
-          if (err) {
-            console.log(err);
-            callback(err, null);
-          } else {
-            console.log('savedUser', savedUser);
-            callback(null, savedUser);
-          }
-        });
+        newUser.save()
+        .then(data => {
+          callback(null, data)
+        })
+        .catch(data => {
+          callback(error, null)
+        })
       });
     }
   });
 };
+
+/*
+ newUser.save((err, savedUser) => {
+  if (err) {
+    console.log(err);
+    callback(err, null);
+  } else {
+    console.log('savedUser', savedUser);
+    callback(null, savedUser);
+  }
+});
+*/
 
 let login = (query, callback) => {
   User.findOne({ email: query.email }, (err, user) => {
