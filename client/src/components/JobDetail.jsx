@@ -101,11 +101,11 @@ class JobDetail extends React.Component {
                 <p> Status: {state}  </p>
                 <p> Salary: {company.payRange} </p>
               </Typography>
-              <Button className={classes.pallete} onClick={() => this.setState({ view: 'edit' })} align="inherit" variant="subheading">
-                EDIT
-            </Button>
             <Button className={classes.pallete} onClick={() => this.props.detailClose()} align="inherit" variant="subheading">
                 CLOSE
+            </Button>
+              <Button className={classes.pallete} onClick={() => this.setState({ view: 'edit' })} align="inherit" variant="subheading">
+                EDIT
             </Button>
             </div>
           </Modal>
@@ -171,12 +171,12 @@ class JobDetail extends React.Component {
               <Button className={classes.pallete} onClick={() => this.setState({ view: 'detail' })} align="inherit" variant="subheading">
                 BACK
              </Button>
-             <Button className={classes.pallete} onClick={() => this.props.detailClose()} align="inherit" variant="subheading">
-                CLOSE
-            </Button>
              <Button className={classes.pallete} onClick={this.update} align="inherit" variant="subheading">
                 UPDATE
              </Button>
+             <Button className={classes.pallete} onClick={() => this.props.detailClose()} align="inherit" variant="subheading">
+                CLOSE
+            </Button>
             </div>
           </Modal>
         </div>
