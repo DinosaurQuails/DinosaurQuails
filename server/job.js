@@ -21,6 +21,7 @@ job.put('/job', (req, res) => {
   // add delete function to database
   // will rely upon params to delete by Id
   //! uses req.body for the data
+  console.log('Body: ', req.body)
   db.updateJob(req.body, (err, result) => {
     if (err) {
       // log error

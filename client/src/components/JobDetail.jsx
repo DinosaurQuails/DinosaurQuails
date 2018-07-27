@@ -40,22 +40,33 @@ const styles = theme => ({
 class JobDetail extends React.Component {
   constructor(props) {
     super(props)
-      this.state = {
+    this.state = {
       view: 'detail',
-      appliedDate: '',
-      state: '',
-      payRange: '',
+      appliedDate: null,
+      state: null,
+      payRange: null,
       open: true
     };
-  }
+    this.handleChange = this.handleChange.bind(this)
+}
 
   update(){
     let updatedData ={
-      appliedDate: this.state.appliedDate,
-      state: this.state.state,
-      payRange: this.state.payRange
+      id: this.props.job._id,
+      edits: {
+        appliedDate: this.state.appliedDate || this.props.job.appliedDate,
+        state: this.state.state || this.props.job.state,
+        company: {
+          payRange: this.state.payRange || this.props.job.company.payRange,
+          name: this.props.job.company.name,
+          jobTitle: this.props.job.company.jobTitle,
+          webSite: this.props.job.company.webSite,
+          logoUrl: this.props.job.company.logoUrl
+        }
+      }
     }
-    this.props.updatedData('/job', updatedData, (res) => {
+    this.props.saveChanges('/job', updatedData, (res) => {
+     console.log('response: ', res)
      this.props.getJobData();
      this.props.detailClose();
     })
@@ -171,7 +182,7 @@ class JobDetail extends React.Component {
               <Button className={classes.pallete} onClick={() => this.setState({ view: 'detail' })} align="inherit" variant="subheading">
                 BACK
              </Button>
-             <Button className={classes.pallete} onClick={this.update} align="inherit" variant="subheading">
+             <Button className={classes.pallete} onClick={this.update.bind(this)} align="inherit" variant="subheading">
                 UPDATE
              </Button>
              <Button className={classes.pallete} onClick={() => this.props.detailClose()} align="inherit" variant="subheading">

@@ -146,6 +146,7 @@ const getJobs = (query, callback) => {
 const updateJob = (update, callback) => {
   // take info from update job except job id
   // use job id to search for specific job by id
+  console.log('update: ', update)
   Job.findByIdAndUpdate(update.id, update.edits)
     .then(result => callback(null, result))
     .catch(err => callback(err, null));
