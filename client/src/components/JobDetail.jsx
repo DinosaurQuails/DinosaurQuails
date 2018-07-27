@@ -6,6 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
+import moment from 'moment';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -78,13 +79,6 @@ class JobDetail extends React.Component {
       [e.target.name]: e.target.value
     })
   }
-  // handleOpen = () => {
-  //   this.setState({ open: true });
-  // };
-
-  // handleClose = () => {
-  //   this.setState({ open: false });
-  // };
 
   render() {
     const { classes } = this.props;
@@ -92,8 +86,6 @@ class JobDetail extends React.Component {
     if (this.state.view === 'detail') {
       return (
         <div>
-          {/* <Typography gutterBottom>Click to get the full Modal experience!</Typography> */}
-          {/* <Button onClick={this.handleOpen}>INFO</Button> */}
           <Modal
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
@@ -108,7 +100,7 @@ class JobDetail extends React.Component {
                 {company.jobTitle}
               </Typography>
               <Typography variant="caption" id="simple-modal-description">
-                <p> Entry Date: {appliedDate}  </p>
+                <p> Entry Date: {moment(appliedDate.substring(0,10).replace(/-/g,'')).fromNow()}  </p>
                 <p> Status: {state}  </p>
                 <p> Salary: {company.payRange} </p>
               </Typography>
@@ -126,8 +118,6 @@ class JobDetail extends React.Component {
     else if (this.state.view === 'edit') {
       return (
         <div>
-          {/* <Typography gutterBottom>Click to get the full Modal experience!</Typography> */}
-          {/* <Button onClick={this.handleOpen}>INFO</Button> */}
           <Modal
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
@@ -150,7 +140,7 @@ class JobDetail extends React.Component {
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  placeholder={appliedDate}
+                  placeholder={moment(appliedDate.substring(0,10).replace(/-/g,'')).fromNow()}
                   fullWidth
                   margin="normal"
                 />
