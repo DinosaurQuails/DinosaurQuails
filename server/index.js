@@ -8,6 +8,7 @@ const app = express();
 const createUser = require('../db/index.js').createUser;
 const jobs = require('./jobs');
 const job = require('./job');
+const PATH = require('path');
 
 app.use((req,res,next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -27,7 +28,7 @@ app.use(
   })
 );
 //Serve static files
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(PATH.join(__dirname, '/../client/dist')));
 
 //Establish routes
 app.get('/', util.checkUser, (req, res) => {
