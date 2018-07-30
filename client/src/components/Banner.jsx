@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * @description Component used to display svg logo for Job concat.
+ * The only thing in this component is the svg.
+**/
+
 const Banner = () => (
   <React.Fragment>
     <svg xmlns="http://www.w3.org/2000/svg" width="256" height="64">
